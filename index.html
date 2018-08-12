@@ -6,6 +6,7 @@
     <style>
         @import 'https://fonts.googleapis.com/css?family=Damion|Work+Sans:900';
         @import 'https://fonts.googleapis.com/css?family=Vampiro One';
+        @import 'https://fonts.googleapis.com/css?family=Iceland';
 
         body,
         html {
@@ -181,10 +182,53 @@
             width: 800px;
             z-index: 11;
         }
+
+        #wrapper {
+            height: 500px;
+            width: 50%;
+            position: absolute;
+            left: 25%;
+
+            border-radius: 30px;
+            border: 2px solid #39ff1490;
+            box-shadow: 0 0 2px #73ff59;
+            background: #212938D0;
+        }
+
+        #content {
+            padding: 20px;
+            width: 95%;
+            height: 100%;
+            font-family: Iceland;
+            font-size: 25px;
+        }
+
+        #content h3 {
+            margin: -10px;
+        }
+
+        .slide {
+            display: none;
+        }
     </style>
+    <script>
+        function init() {
+            myIndex = 1;
+            xdivs = document.getElementsByClassName("slide");
+            carousel();
+        }
+
+        function carousel() {
+            xdivs[myIndex].style.display = "none";
+            myIndex++;
+            if (myIndex >= xdivs.length) { myIndex = 0 }
+            xdivs[myIndex].style.display = "block";
+            setTimeout(carousel, 10000); // Change image every 2 seconds
+        }
+    </script>
 </head>
 
-<body>
+<body onload="init()">
     <div class="text">
         <div id="headline">
             <h1>Ich mag elektrische Antriebe</h1>
@@ -268,6 +312,42 @@
             </table>
         </div>
     </div>
+    <div id="wrapper">
+            <div id="content">
+                <div class="slide">
+                    <h3>o_hai</h3>
+                    <p>Sei willkommen! Komm rein, fühl dich wohl. Schnapp dir einen Stuhl, schmeiß dich in ein Gespräch. Trau dich
+                        gerne einzusteigen oder auch einfach nur zuzuhören.</p>
+                    <h4>WLAN</h4>
+                    <p> CCCAC_{PSK_,OPEN,}{2.4,5.0}GHz</p>
+                    <p>User: cccac
+                        <br> Password: 23cccac42 </p>
+                    <h4> Du bist hier willkommen :)</h4>
+                </div>
+                <div class="slide">
+                    <h4>Getränke</h4>
+                    <p>Zu deiner Linken gibt es Kühlschränke. Du kannst am Tablet die Preise nachschauen, indem du einen Account
+                        auswählst. Wenn du häufiger bei uns Gast bist kann es sinnvoll sein dir einen eigenen Account anzulegen.</p>
+                    <h4>Toilette</h4>
+                    <p> Findest du links von dir in der Ecke. </p>
+                </div>
+                <div class="slide">
+                    <h3>Hackerethik</h3>
+                    <p>Die ethischen Grundsätze des Hackens – Motivation und Grenzen:</p>
+                    <p>
+                        Der Zugang zu Computern und allem, was einem zeigen kann, wie diese Welt funktioniert, sollte unbegrenzt und vollständig
+                        sein. Alle Informationen müssen frei sein. Mißtraue Autoritäten – fördere Dezentralisierung.
+                        <br> Beurteile einen Hacker nach dem, was er tut, und nicht nach üblichen Kriterien wie Aussehen,
+                        <br> Alter, Herkunft, Spezies, Geschlecht oder gesellschaftliche Stellung.
+                        <br> Man kann mit einem Computer Kunst und Schönheit schaffen.
+                        <br> Computer können dein Leben zum Besseren verändern.
+                        <br> Mülle nicht in den Daten anderer Leute.
+                        <br> Öffentliche Daten nützen, private Daten schützen.
+                    </p>
+    
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
