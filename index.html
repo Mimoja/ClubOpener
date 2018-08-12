@@ -7,6 +7,7 @@
         @import 'https://fonts.googleapis.com/css?family=Damion|Work+Sans:900';
         @import 'https://fonts.googleapis.com/css?family=Vampiro One';
         @import 'https://fonts.googleapis.com/css?family=Iceland';
+        @import 'https://fonts.googleapis.com/css?family=Monoton';
 
         body,
         html {
@@ -210,12 +211,36 @@
         .slide {
             display: none;
         }
+
+        #clock {
+            font-size: 80px;
+            color: #ffffff;
+            font-family: Monoton;
+            text-transform: uppercase;
+            animation: neonRed 1.5s ease-in-out infinite alternate;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            text-align: left;
+            width: 400px;
+        }
+
+
+        @keyframes neonRed {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+            }
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+            }
+        }
     </style>
     <script>
         function init() {
             myIndex = 1;
             xdivs = document.getElementsByClassName("slide");
             carousel();
+            startTime();
         }
 
         function carousel() {
@@ -224,6 +249,22 @@
             if (myIndex >= xdivs.length) { myIndex = 0 }
             xdivs[myIndex].style.display = "block";
             setTimeout(carousel, 10000); // Change image every 2 seconds
+        }
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
         }
     </script>
 </head>
@@ -312,42 +353,43 @@
             </table>
         </div>
     </div>
+    <div id="clock"> </div>
     <div id="wrapper">
-            <div id="content">
-                <div class="slide">
-                    <h3>o_hai</h3>
-                    <p>Sei willkommen! Komm rein, fühl dich wohl. Schnapp dir einen Stuhl, schmeiß dich in ein Gespräch. Trau dich
-                        gerne einzusteigen oder auch einfach nur zuzuhören.</p>
-                    <h4>WLAN</h4>
-                    <p> CCCAC_{PSK_,OPEN,}{2.4,5.0}GHz</p>
-                    <p>User: cccac
-                        <br> Password: 23cccac42 </p>
-                    <h4> Du bist hier willkommen :)</h4>
-                </div>
-                <div class="slide">
-                    <h4>Getränke</h4>
-                    <p>Zu deiner Linken gibt es Kühlschränke. Du kannst am Tablet die Preise nachschauen, indem du einen Account
-                        auswählst. Wenn du häufiger bei uns Gast bist kann es sinnvoll sein dir einen eigenen Account anzulegen.</p>
-                    <h4>Toilette</h4>
-                    <p> Findest du links von dir in der Ecke. </p>
-                </div>
-                <div class="slide">
-                    <h3>Hackerethik</h3>
-                    <p>Die ethischen Grundsätze des Hackens – Motivation und Grenzen:</p>
-                    <p>
-                        Der Zugang zu Computern und allem, was einem zeigen kann, wie diese Welt funktioniert, sollte unbegrenzt und vollständig
-                        sein. Alle Informationen müssen frei sein. Mißtraue Autoritäten – fördere Dezentralisierung.
-                        <br> Beurteile einen Hacker nach dem, was er tut, und nicht nach üblichen Kriterien wie Aussehen,
-                        <br> Alter, Herkunft, Spezies, Geschlecht oder gesellschaftliche Stellung.
-                        <br> Man kann mit einem Computer Kunst und Schönheit schaffen.
-                        <br> Computer können dein Leben zum Besseren verändern.
-                        <br> Mülle nicht in den Daten anderer Leute.
-                        <br> Öffentliche Daten nützen, private Daten schützen.
-                    </p>
-    
-                </div>
+        <div id="content">
+            <div class="slide">
+                <h3>o_hai</h3>
+                <p>Sei willkommen! Komm rein, fühl dich wohl. Schnapp dir einen Stuhl, schmeiß dich in ein Gespräch. Trau dich
+                    gerne einzusteigen oder auch einfach nur zuzuhören.</p>
+                <h4>WLAN</h4>
+                <p> CCCAC_{PSK_,OPEN,}{2.4,5.0}GHz</p>
+                <p>User: cccac
+                    <br> Password: 23cccac42 </p>
+                <h4> Du bist hier willkommen :)</h4>
+            </div>
+            <div class="slide">
+                <h4>Getränke</h4>
+                <p>Zu deiner Linken gibt es Kühlschränke. Du kannst am Tablet die Preise nachschauen, indem du einen Account
+                    auswählst. Wenn du häufiger bei uns Gast bist kann es sinnvoll sein dir einen eigenen Account anzulegen.</p>
+                <h4>Toilette</h4>
+                <p> Findest du links von dir in der Ecke. </p>
+            </div>
+            <div class="slide">
+                <h3>Hackerethik</h3>
+                <p>Die ethischen Grundsätze des Hackens – Motivation und Grenzen:</p>
+                <p>
+                    Der Zugang zu Computern und allem, was einem zeigen kann, wie diese Welt funktioniert, sollte unbegrenzt und vollständig
+                    sein. Alle Informationen müssen frei sein. Mißtraue Autoritäten – fördere Dezentralisierung.
+                    <br> Beurteile einen Hacker nach dem, was er tut, und nicht nach üblichen Kriterien wie Aussehen,
+                    <br> Alter, Herkunft, Spezies, Geschlecht oder gesellschaftliche Stellung.
+                    <br> Man kann mit einem Computer Kunst und Schönheit schaffen.
+                    <br> Computer können dein Leben zum Besseren verändern.
+                    <br> Mülle nicht in den Daten anderer Leute.
+                    <br> Öffentliche Daten nützen, private Daten schützen.
+                </p>
+
             </div>
         </div>
+    </div>
 </body>
 
 </html>
